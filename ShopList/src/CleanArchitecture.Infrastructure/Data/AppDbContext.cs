@@ -17,6 +17,8 @@ namespace CleanArchitecture.Infrastructure.Data
         }
 
         public DbSet<ToDoItem> ToDoItems { get; set; }
+        public DbSet<ShopItem> ShopItems { get; set; }
+        public DbSet<ShopList> ShopLists { get; set; }
 
         public override int SaveChanges()
         {
@@ -30,7 +32,7 @@ namespace CleanArchitecture.Infrastructure.Data
 
             foreach (var entity in entitiesWithEvents)
             {
-                var events = entity.Events.ToArray();
+                var events = entity.Events.ToArray(); // make a copy of the events before cleaning
                 entity.Events.Clear();
                 foreach (var domainEvent in events)
                 {

@@ -1,0 +1,16 @@
+﻿@model CleanArchitecture.Core.Entities.ShopList
+
+@{
+    ViewBag.Title = "Shop List";
+    Layout = "_Layout";
+}
+
+<h2>My Shopping List</h2>
+
+<input type="text" placeholder="Add an shop Item"/>
+<ul>
+    @foreach (var item in Model.ShopItems)
+    {
+        <li>@item.Description</li>
+    }
+</ul>
